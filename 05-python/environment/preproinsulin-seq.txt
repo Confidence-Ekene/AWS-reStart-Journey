@@ -1,0 +1,31 @@
+import re
+
+data = """ORIGIN      
+        1 malwmrllpl lallalwgpd paaafvnqhl cgshlvealy lvcgergffy tpktrreaed
+       61 lqvgqvelgg gpgagslqpl alegslqkrg iveqcctsic slyqlenycn
+//"""
+
+# Remove ORIGIN
+data = re.sub(r"ORIGIN", "", data)
+
+# Remove numbers
+data = re.sub(r"\d+", "", data)
+
+# Remove // 
+data = re.sub(r"//", "", data)
+
+# Remove spaces and line breaks
+sequence = re.sub(r"\s+", "", data)
+
+# Convert to uppercase
+sequence = sequence.upper()
+
+print("Cleaned sequence:")
+print(sequence)
+
+print("\nNumber of characters:", len(sequence))
+
+if len(sequence) == 110:
+    print("✓ The sequence contains exactly 110 characters.")
+else:
+    print("✗ The sequence does not contain 110 characters.")
